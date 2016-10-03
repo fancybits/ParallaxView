@@ -13,6 +13,7 @@ internal let glowImageAccessibilityIdentifier = "com.pgs-soft.parallaxview.glowe
 public protocol AnyParallaxableView {
     func addParallaxMotionEffects()
     func addParallaxMotionEffects(with options: inout ParallaxEffectOptions)
+    func removeParallaxMotionEffects()
     func removeParallaxMotionEffects(glowContainer glowContainerView: UIView?)
 }
 
@@ -32,6 +33,12 @@ extension UIView: AnyParallaxableView {
 
     public func addParallaxMotionEffects() {
         var options = ParallaxEffectOptions()
+        addParallaxMotionEffects(with: &options)
+    }
+
+    public func addParallaxMotionEffectsWithoutGlow() {
+        var options = ParallaxEffectOptions()
+        options.glowAlpha = 0.0
         addParallaxMotionEffects(with: &options)
     }
 
@@ -126,6 +133,10 @@ extension UIView: AnyParallaxableView {
                     subview.addMotionEffect(group)
             }
         }
+    }
+
+    public func removeParallaxMotionEffects() {
+        removeParallaxMotionEffects(glowContainer: nil)
     }
 
     public func removeParallaxMotionEffects(glowContainer glowContainerView: UIView? = nil) {
