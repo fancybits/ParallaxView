@@ -33,6 +33,7 @@ extension UIView: AnyParallaxableView {
 
     public func addParallaxMotionEffects() {
         var options = ParallaxEffectOptions()
+        options.glowAlpha = 0.6
         addParallaxMotionEffects(with: &options)
     }
 
