@@ -124,7 +124,7 @@ extension UIView: AnyParallaxableView {
 
     public func removeParallaxMotionEffects() {
         var options = ParallaxEffectOptions()
-        removeParallaxMotionEffects(with: &options)
+        removeParallaxMotionEffects(with: options)
     }
 
     public func removeParallaxMotionEffects(with options: ParallaxEffectOptions? = nil) {
