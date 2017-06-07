@@ -61,7 +61,10 @@ The component is documented in code, also look into example for more details.
 	* `subviewsParallaxMode` - enum that allow you to configure parallax effect for subviews of the `ParallaxView`
 	* `shadowPanDeviation` - maximal value of points that shadow of the `ParallaxView` will be moved during parallax effect
 	* `glowAlpha` - configure alpha of the glow effect (if is equal to 0.0 then the glow effect will be not added)
+	* `parallaxSubviewsContainer` - custom container view that will be usead to apply subviews parallax effect. By default it will be parallaxable view by itself.
 	* `glowContainerView` - view that will be used as the container for the glow effect. You don't have to configure this because for `ParallaxView` it will be automatically created a subview for this purpose, while for `ParallaxCollectionViewCell` it will be used `contentView` of the cell. Also by default it is nil when you use extension (`self` will be used as the glow container but only if `glowAlpha` is bigger than 0.0). But if you want to, you can define custom view - look into example project for more details.
+	* `glowImageView` - image view that will be used as the glow effect. `ParallaxView` framework provides default image that will be set.
+
 * `parallaxViewActions` - use properties of this property to change default behaviours of the parallax view. Internally both `ParallaxView` and `ParallaxCollectionViewCell` calls callbacks.
 	* `setupUnfocusedState ` - closure will be called in animation block when view should change its appearance to the focused state
 	* `setupFocusedState` - closure will be called in animation block when view should change its appearance to the unfocused state

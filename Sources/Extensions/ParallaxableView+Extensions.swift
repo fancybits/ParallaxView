@@ -27,7 +27,7 @@ open class ParallaxViewActions<T: UIView> where T:ParallaxableView {
     /// Default implementation of the press ended animation for the ParallaxableView
     open var animatePressOut: ((T, _ presses: Set<UIPress>, _ event: UIPressesEvent?) -> Void)?
 
-    init() {
+    public init() {
         becomeFocused = { [weak self] (view: T, context, coordinator) in
             self?.beforeBecomeFocusedAnimation?(view)
 
@@ -41,7 +41,7 @@ open class ParallaxViewActions<T: UIView> where T:ParallaxableView {
             self?.beforeResignFocusAnimation?(view)
 
             coordinator.addCoordinatedAnimations({
-                view.removeParallaxMotionEffects(glowContainer: view.parallaxEffectOptions.glowContainerView)
+                view.removeParallaxMotionEffects(with: view.parallaxEffectOptions)
                 self?.setupUnfocusedState?(view)
                 }, completion: nil)
         }

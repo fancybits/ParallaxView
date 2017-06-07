@@ -15,7 +15,7 @@ open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
     open var parallaxViewActions = ParallaxViewActions<ParallaxCollectionViewCell>()
 
     // MARK: Initialization
-
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -38,6 +38,10 @@ open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
 
         if parallaxEffectOptions.glowContainerView == nil {
             parallaxEffectOptions.glowContainerView = contentView
+        }
+
+        if parallaxEffectOptions.parallaxSubviewsContainer == nil {
+            parallaxEffectOptions.parallaxSubviewsContainer = contentView
         }
 
         parallaxViewActions.setupUnfocusedState = { [weak self] (view) in
@@ -90,7 +94,6 @@ open class ParallaxCollectionViewCell: UICollectionViewCell, ParallaxableView {
     // Generally, all responders which do custom touch handling should override all four of these methods.
     // If you want to customize animations for press events do not forget to call super.
     open override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        parallaxViewActions.setupFocusedState?(self)
         parallaxViewActions.animatePressIn?(self, presses, event)
 
         super.pressesBegan(presses, with: event)
