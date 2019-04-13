@@ -17,7 +17,7 @@ public protocol AnyParallaxableView {
 
 extension UIView: AnyParallaxableView {
     
-    public func addParallaxMotionEffects() {
+    @objc public func addParallaxMotionEffects() {
         var options = ParallaxEffectOptions()
         options.glowAlpha = 0.6
         addParallaxMotionEffects(with: &options)
@@ -122,7 +122,7 @@ extension UIView: AnyParallaxableView {
         }
     }
 
-    public func removeParallaxMotionEffects() {
+    @objc public func removeParallaxMotionEffects() {
         var options = ParallaxEffectOptions()
         removeParallaxMotionEffects(with: options)
     }
